@@ -30,6 +30,7 @@ export default class App extends Component<Props> {
     }
 
     return (
+      
       <View style={styles.container}>
         <View style={styles.result}>
           <Text style={styles.resultText}>121</Text>
@@ -38,7 +39,7 @@ export default class App extends Component<Props> {
           <Text style={styles.calculationText}>11*11</Text>
         </View>
         <View style={styles.buttons}>
-        
+
           <View style={styles.numbers}>
             {rows}
           </View>
