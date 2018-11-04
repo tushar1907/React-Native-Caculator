@@ -18,25 +18,33 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  buttonPressed(text) {
+    console.log(text);
+  }
   render() {
 
     let rows = []
-    let numbs =[[1,2,3],[4,5,6],[7,8,9],[0,0,'=']]
+    let numbs = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0, '=']]
     for (let i = 0; i < 4; i++) {
       let row = []
       for (let j = 0; j < 3; j++) {
-        row.push(<TouchableOpacity style={styles.btn}><Text style={styles.btnText}>{numbs[i][j]}</Text></TouchableOpacity>)
+        row.push(<TouchableOpacity
+          onPress={() => this.buttonPressed(numbs[i][j])}
+          style={styles.btn}>
+          <Text style={styles.btnText}>{numbs[i][j]}</Text>
+        </TouchableOpacity>)
       }
       rows.push(<View style={styles.row}>{row}</View>)
     }
 
-    let operations = ['+','-','*','/']
+    let operations = ['D', '+', '-', '*', '/']
     let ops = []
-    for (let i = 0; i < 4; i++) {
-      ops.push(<TouchableOpacity style={styles.btn}><Text style={[styles.btnText,styles.white]}>{operations[i]}</Text></TouchableOpacity>)      
+    for (let i = 0; i < 5; i++) {
+      ops.push(<TouchableOpacity style={styles.btn}><Text style={[styles.btnText, styles.white]}>{operations[i]}</Text></TouchableOpacity>)
     }
     return (
-      
+
       <View style={styles.container}>
         <View style={styles.result}>
           <Text style={styles.resultText}>121</Text>
@@ -64,10 +72,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  btnText:{
+  btnText: {
     fontSize: 30
   },
-  white:{
+  white: {
     color: 'white'
   },
   btn: {
