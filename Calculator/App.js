@@ -21,10 +21,11 @@ export default class App extends Component<Props> {
   render() {
 
     let rows = []
-    for (let i = 0; i <= 4; i++) {
+    let numbs =[[1,2,3],[4,5,6],[7,8,9],[0,0,'=']]
+    for (let i = 0; i < 4; i++) {
       let row = []
-      for (let j = 0; j <= 3; j++) {
-        row.push(<TouchableOpacity style={styles.btn}><Text>{i + 1}</Text></TouchableOpacity>)
+      for (let j = 0; j < 3; j++) {
+        row.push(<TouchableOpacity style={styles.btn}><Text style={styles.btnText}>{numbs[i][j]}</Text></TouchableOpacity>)
       }
       rows.push(<View style={styles.row}>{row}</View>)
     }
@@ -60,6 +61,9 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  btnText:{
+    fontSize: 30
   },
   btn: {
     flex: 1,
