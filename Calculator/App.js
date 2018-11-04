@@ -30,6 +30,11 @@ export default class App extends Component<Props> {
       rows.push(<View style={styles.row}>{row}</View>)
     }
 
+    let operations = ['+','-','*','/']
+    let ops = []
+    for (let i = 0; i < 4; i++) {
+      ops.push(<TouchableOpacity style={styles.btn}><Text style={[styles.btnText,styles.white]}>{operations[i]}</Text></TouchableOpacity>)      
+    }
     return (
       
       <View style={styles.container}>
@@ -46,10 +51,7 @@ export default class App extends Component<Props> {
           </View>
 
           <View style={styles.operations}>
-            <Button title="+" />
-            <Button title="-" />
-            <Button title="*" />
-            <Button title="/" />
+            {ops}
           </View>
         </View>
 
@@ -64,6 +66,9 @@ const styles = StyleSheet.create({
   },
   btnText:{
     fontSize: 30
+  },
+  white:{
+    color: 'white'
   },
   btn: {
     flex: 1,
