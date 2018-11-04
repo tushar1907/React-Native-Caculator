@@ -19,8 +19,18 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
 
+  constructor() {
+    super()
+    this.state = {
+      resultText: ''
+    }
+  }
+
   buttonPressed(text) {
     console.log(text);
+    this.setState({
+      resultText: this.setState.resultText+text
+    })
   }
   render() {
 
@@ -50,7 +60,7 @@ export default class App extends Component<Props> {
           <Text style={styles.resultText}>121</Text>
         </View>
         <View style={styles.calculation}>
-          <Text style={styles.calculationText}>11*11</Text>
+          <Text style={styles.calculationText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.buttons}>
 
