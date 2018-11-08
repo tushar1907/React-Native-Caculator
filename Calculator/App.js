@@ -22,7 +22,7 @@ export default class App extends Component<Props> {
   constructor() {
     super()
     this.state = {
-      resultText: ''
+      resultText: ""
     }
   }
 
@@ -39,7 +39,8 @@ export default class App extends Component<Props> {
     for (let i = 0; i < 4; i++) {
       let row = []
       for (let j = 0; j < 3; j++) {
-        row.push(<TouchableOpacity
+        row.push(
+        <TouchableOpacity
           onPress={() => this.buttonPressed(numbs[i][j])}
           style={styles.btn}>
           <Text style={styles.btnText}>{numbs[i][j]}</Text>
@@ -57,10 +58,10 @@ export default class App extends Component<Props> {
 
       <View style={styles.container}>
         <View style={styles.result}>
-          <Text style={styles.resultText}>121</Text>
+          <Text style={styles.resultText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.calculation}>
-          <Text style={styles.calculationText}>{this.state.resultText}</Text>
+          <Text style={styles.calculationText}></Text>
         </View>
         <View style={styles.buttons}>
 
