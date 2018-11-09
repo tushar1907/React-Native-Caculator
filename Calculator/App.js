@@ -22,15 +22,16 @@ export default class App extends Component<Props> {
   constructor() {
     super()
     this.state = {
-      resultText: ""
+      resultText: " "
     }
   }
 
   buttonPressed(text) {
     console.log(text);
     this.setState({
-      resultText: this.setState.resultText+text
+      resultText: this.state.resultText+text
     })
+    console.log(this.state.resultText)
   }
   render() {
 
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   },
   calculationText: {
     fontSize: 40,
-    color: 'white',
+    color: 'white', 
     justifyContent: 'center',
     alignItems: 'flex-end'
   },
