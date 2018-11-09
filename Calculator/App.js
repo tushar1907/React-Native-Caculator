@@ -22,16 +22,42 @@ export default class App extends Component<Props> {
   constructor() {
     super()
     this.state = {
-      resultText: " "
+      resultText: ""
     }
   }
 
+  calculateResult(){
+    const text = this.state.resultText
+
+    //parsing the result set
+
+  }
+
   buttonPressed(text) {
-    console.log(text);
+    console.log(text);  
+
+    if(text == '='){
+      return this.calculateResult()
+    }
     this.setState({
       resultText: this.state.resultText+text
     })
     console.log(this.state.resultText)
+  }
+
+  operate(operation){
+    switch(operation){
+      case 'D':
+        let text = this.state.resultText.split('')
+        text.pop()
+        text.join('')
+        this.setState({
+          resultText: text
+        })
+
+      case '+':
+        
+    }
   }
   render() {
 
@@ -53,7 +79,11 @@ export default class App extends Component<Props> {
     let operations = ['D', '+', '-', '*', '/']
     let ops = []
     for (let i = 0; i < 5; i++) {
-      ops.push(<TouchableOpacity style={styles.btn}><Text style={[styles.btnText, styles.white]}>{operations[i]}</Text></TouchableOpacity>)
+      ops.push(<TouchableOpacity 
+        style={styles.btn}>
+        onPress={()=> this.operate(operations[i])}
+        <Text style={[styles.btnText, styles.white]}>{operations[i]}</Text>
+        </TouchableOpacity>)
     }
     return (
 
