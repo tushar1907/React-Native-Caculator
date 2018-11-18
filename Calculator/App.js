@@ -27,8 +27,10 @@ export default class App extends Component<Props> {
   }
 
   calculateResult(){
-    const text = this.state.resultText
 
+    
+    const text = this.state.resultText
+    
     //parsing the result set
 
   }
@@ -37,6 +39,7 @@ export default class App extends Component<Props> {
     console.log(text);  
 
     if(text == '='){
+
       return this.calculateResult()
     }
     this.setState({
@@ -56,7 +59,11 @@ export default class App extends Component<Props> {
         })
 
       case '+':
-        
+      case '-':
+      case '*':
+      case '/':
+          if(this.state.text == '') return
+          this.setState({resultText: this.state.resultText + operation})        
     }
   }
   render() {
@@ -80,11 +87,13 @@ export default class App extends Component<Props> {
     let ops = []
     for (let i = 0; i < 5; i++) {
       ops.push(<TouchableOpacity 
-        style={styles.btn}>
-        onPress={()=> this.operate(operations[i])}
+        style={styles.btn}
+        onPress={()=> this.operate(operations[i])}>
         <Text style={[styles.btnText, styles.white]}>{operations[i]}</Text>
         </TouchableOpacity>)
     }
+
+
     return (
 
       <View style={styles.container}>
@@ -101,7 +110,7 @@ export default class App extends Component<Props> {
           </View>
 
           <View style={styles.operations}>
-            {ops}
+          {ops}
           </View>
         </View>
 
