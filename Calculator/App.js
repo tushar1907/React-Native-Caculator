@@ -24,6 +24,8 @@ export default class App extends Component<Props> {
     this.state = {
       resultText: ""
     }
+
+    this.operations = ['D', '+', '-', '*', '/']
   }
 
   calculateResult(){
@@ -52,16 +54,17 @@ export default class App extends Component<Props> {
     switch(operation){
       case 'D':
         let text = this.state.resultText.split('')
-        text.pop()
-        text.join('')
+        text.pop()        
         this.setState({
-          resultText: text
+          resultText: text.join('')
         })
 
       case '+':
       case '-':
       case '*':
       case '/':
+          const lastChar =  this.state.resultText.split('').pop();
+          if(this.operations.indexOf(lastChar) > 0) return
           if(this.state.text == '') return
           this.setState({resultText: this.state.resultText + operation})        
     }
@@ -83,13 +86,13 @@ export default class App extends Component<Props> {
       rows.push(<View style={styles.row}>{row}</View>)
     }
 
-    let operations = ['D', '+', '-', '*', '/']
+    
     let ops = []
     for (let i = 0; i < 5; i++) {
       ops.push(<TouchableOpacity 
         style={styles.btn}
-        onPress={()=> this.operate(operations[i])}>
-        <Text style={[styles.btnText, styles.white]}>{operations[i]}</Text>
+        onPress={()=> this.operate(this.operations[i])}>
+        <Text style={[styles.btnText, styles.white]}>{this.operations[i]}</Text>
         </TouchableOpacity>)
     }
 
