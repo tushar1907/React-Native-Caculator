@@ -22,7 +22,8 @@ export default class App extends Component<Props> {
   constructor() {
     super()
     this.state = {
-      resultText: ""
+      resultText: "",
+      calculationText: "" 
     }
 
     this.operations = ['D', '+', '-', '*', '/']
@@ -32,7 +33,11 @@ export default class App extends Component<Props> {
 
     
     const text = this.state.resultText
-    
+    //console.log(text, eval(text))
+    this.setState({
+      calculationText: eval(text)
+    })
+
     //parsing the result set
 
   }
@@ -104,7 +109,7 @@ export default class App extends Component<Props> {
           <Text style={styles.resultText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.calculation}>
-          <Text style={styles.calculationText}></Text>
+          <Text style={styles.calculationText}>{this.state.calculationText}</Text>
         </View>
         <View style={styles.buttons}>
 
