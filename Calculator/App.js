@@ -58,7 +58,7 @@ export default class App extends Component<Props> {
         this.setState({
           resultText: text.join('')
         })
-
+        break
       case '+':
       case '-':
       case '*':
