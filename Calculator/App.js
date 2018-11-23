@@ -30,25 +30,35 @@ export default class App extends Component<Props> {
   }
 
   calculateResult(){
-
     
     const text = this.state.resultText
     //console.log(text, eval(text))
     this.setState({
       calculationText: eval(text)
     })
-
     //parsing the result set
 
+  }
+
+  validate(){
+    const text = this.state.resultText
+    switch(text.slice(-1)){
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+          return false
+    }
+    return true
   }
 
   buttonPressed(text) {
     console.log(text);  
 
     if(text == '='){
-
-      return this.calculateResult()
+      return this.validate() && this.calculateResult();
     }
+    
     this.setState({
       resultText: this.state.resultText+text
     })
